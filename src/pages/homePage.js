@@ -2,14 +2,14 @@
  * Created by @tranphuquy19 on 12/12/2019
  * Email: tranphuquy19@gmail.com
  */
-import React, {Component} from 'react';
+import React, {Component, useContext, useState} from 'react';
 import {connect} from "react-redux";
 import {Get_All} from "../actions/songsAction";
 import { Icon,Button,Carousel } from 'antd';
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './homePage.css';
 import AlbumPlayList from "../components/HomeComponents/AlbumPlayList";
-
+import {SongIndexContext} from "../contexts/songIndexContext";
+import {PlaylistContext} from "../contexts/playlistContext";
 
 class HomePage extends Component {
     constructor(props){
