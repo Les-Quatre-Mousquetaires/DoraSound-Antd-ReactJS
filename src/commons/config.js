@@ -4,5 +4,6 @@
  */
 let config = {
     API_URL: 'https://doraneko.tk',
+    // API_URL: 'http://localhost:4000'
 }
 export default config;

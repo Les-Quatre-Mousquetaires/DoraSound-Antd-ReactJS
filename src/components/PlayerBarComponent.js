@@ -93,7 +93,8 @@ export function PlayerBarComponent(props) {
     let removeSongByIndex = (i) => {
         let tempPlaylist = [...playlist];
         tempPlaylist.splice(i, 1);
-        setPlaylist(tempPlaylist);
+        if(tempPlaylist.length == 0) controls.seek(masterDuration);
+        else setPlaylist(tempPlaylist);
     }
 
     const onSlideBarChange = value => {

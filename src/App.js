@@ -8,6 +8,7 @@ import {HeaderComponent} from "./components/HeaderComponent";
 import {ContentComponent} from "./components/ContentComponent";
 import Store from "./store";
 import LoginModelComponent from "./components/LoginModalComponent";
+import {BrowserRouter} from "react-router-dom";
 
 function App() {
     let [collapsed, setCollapsed] = useState(true);
@@ -16,15 +17,17 @@ function App() {
     };
     return (
         <Store>
-            <Layout style={{minHeight: '100vh'}}>
-                <SiderComponent collapsed={collapsed} onCollapse={onCollapse}/>
-                <Layout>
-                    <HeaderComponent/>
-                    <ContentComponent/>
-                    {/*<Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>*/}
+            <BrowserRouter>
+                <Layout style={{minHeight: '100vh'}}>
+                    <SiderComponent collapsed={collapsed} onCollapse={onCollapse}/>
+                    <Layout>
+                        <HeaderComponent/>
+                        <ContentComponent/>
+                        {/*<Footer style={{textAlign: 'center'}}>Ant Design ©2018 Created by Ant UED</Footer>*/}
+                    </Layout>
                 </Layout>
-            </Layout>
-            <LoginModelComponent/>
+                <LoginModelComponent/>
+            </BrowserRouter>
         </Store>
     );
 }

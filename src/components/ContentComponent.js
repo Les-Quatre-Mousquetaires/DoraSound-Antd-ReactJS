@@ -2,6 +2,9 @@ import {Breadcrumb, Layout} from "antd";
 import React, {useContext} from "react";
 import {PlayerBarComponent} from "./PlayerBarComponent";
 import {PlayerContext} from "../contexts/playerContext";
+import {BrowserRouter} from "react-router-dom";
+import routerRendering from "../commons/routerRendering";
+import homeContentRoutes from "../routers/homeContentRoutes";
 
 const {Content} = Layout;
 
@@ -15,7 +18,9 @@ export function ContentComponent() {
         </Breadcrumb>
 
         {/*Content Here*/}
-        <div style={{padding: 24, background: "#fff"}}>{JSON.stringify(state, null, 2)}</div>
+        <div style={{padding: 24, background: "#fff"}}>
+            {routerRendering(homeContentRoutes, true)}
+        </div>
         {/*End content*/}
 
         <PlayerBarComponent/>
