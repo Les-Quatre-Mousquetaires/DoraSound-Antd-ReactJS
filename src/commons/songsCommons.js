@@ -2,9 +2,9 @@
  * Created by @tranphuquy19 on 11/12/2019
  * Email: tranphuquy19@gmail.com
  */
+import config from './config';
 
 const getRoundTime = (time, duration) => {
-    console.log({time, duration});
     if (typeof time === 'number' && typeof duration === 'number') {
         return Math.round((time / duration) * 100);
     } else return 0;
@@ -27,9 +27,13 @@ const fancyTimeFormat = (time) => {
     ret += "" + secs;
     return ret;
 }
+const convertToPlayerItemObject = (obj) => {
+    return `${config.API_URL}/resources/audios/${obj.src}`;
 
+}
 export {
     getRoundTime,
     getSeekTime,
-    fancyTimeFormat
+    fancyTimeFormat,
+    convertToPlayerItemObject
 }

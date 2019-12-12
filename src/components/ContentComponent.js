@@ -9,8 +9,6 @@ import homeContentRoutes from "../routers/homeContentRoutes";
 const {Content} = Layout;
 
 export function ContentComponent() {
-    let {audio, state, controls, ref} = useContext(PlayerContext);
-
     return <Content style={{margin: "0 16px"}}>
         <Breadcrumb style={{margin: "16px 0"}}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
