@@ -7,22 +7,20 @@
     overflow: hidden;
 }
 
-.ant-carousel .slick-slide h3 {
+#name_song{
     text-align: right;
     font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
-    font-weight: normal;
+    font-weight: lighter;
     font-size: 1.75em;
     letter-spacing: .2em;
     line-height: 1.1em;
-    margin-right: 2em;
-    margin-top: 1em;
     text-transform: uppercase;
     cursor: pointer;
 }
 #imgTrend{
     border: 2px solid #80bdff;
     height: 450px;
-    width: 100em;
+    width: available;
     margin: auto;
     border-radius: 15px;
 }

@@ -5,35 +5,56 @@
 import React, {Component, useContext, useState} from 'react';
 import {connect} from "react-redux";
 import {Get_All} from "../actions/songsAction";
-import { Icon,Button,Carousel } from 'antd';
+import {Avatar, Icon, Card, Carousel} from 'antd';
 import './homePage.css';
 import AlbumPlayList from "../components/HomeComponents/AlbumPlayList";
-import {SongIndexContext} from "../contexts/songIndexContext";
-import {PlaylistContext} from "../contexts/playlistContext";
+
+const {Meta} = Card;
 
 class HomePage extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
 
     }
+
     componentDidMount() {
         let {getAllSongs} = this.props;
         getAllSongs();
     }
-    playOnAlbum = (e)=>{
-      console.log(e.target.id);
-    };
+
     render() {
         let playist = [];
         let albumPlaylist;
-        if(this.props.song.length>0){
+        if (this.props.song.length > 0) {
             playist = this.props.song;
-            albumPlaylist = playist.map((item,index)=>{
-                let imgURL = "https://doraneko.tk/resources/images/"+item.image;
+            albumPlaylist = playist.map((item, index) => {
+                let imgURL = "https://doraneko.tk/resources/images/" + item.image;
                 return (
                     <div key={index}>
-                        <img id="imgTrend" src={imgURL}/>
-                        <h3 id={item._id} onClick={this.playOnAlbum} className="legend">{item.name}</h3>
+                        {/*<img id="imgTrend" alt="" src={imgURL}/>*/}
+                        <Card
+                            style={{width: "auto", height: "auto"}}
+                            cover={
+                                <img id="imgTrend"
+                                     alt="example"
+                                     src={imgURL}
+                                />
+                            }
+                            actions={[
+                                <AlbumPlayList id={item._id} type="play-circle" name="Nghe Luôn"/>,
+                                <AlbumPlayList id={item._id} type="plus" name="Thêm vào danh sách"/>,
+                                <AlbumPlayList id={item._id} type="ellipsis" name="Chia sẻ"/>,
+                            ]}
+                        >
+                            <Meta id="name_song"
+                                  title={item.name}
+                            />
+                        </Card>
+                        {/*<div className="row">*/}
+                        {/*    <div className="col-2 mt-3">*/}
+                        {/*        <AlbumPlayList id={item._id}/>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                 );
             });
@@ -43,25 +64,24 @@ class HomePage extends Component {
                 <Carousel effect="fade" autoplay>
                     {albumPlaylist}
                 </Carousel>
-
-
-
             </div>
         );
     }
 }
-const mapStateToProps = (state)=>{
-  return{
-    song:  state.songsReducer
-  };
-};
-const mapDispatchToProps = (dispatch)=>{
+
+const mapStateToProps = (state) => {
     return {
-        getAllSongs: ()=>{
+        song: state.songsReducer
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getAllSongs: () => {
             dispatch(
                 Get_All()
             );
         }
     }
 };
-export default connect(mapStateToProps,mapDispatchToProps)(HomePage);
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
