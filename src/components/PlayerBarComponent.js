@@ -10,6 +10,7 @@ let masterDuration = 0;
 export function PlayerBarComponent(props) {
     let playerBarStyle = {
         backgroundColor: '#03141A'
+        
     };
     let music = [
         {
@@ -93,7 +94,8 @@ export function PlayerBarComponent(props) {
     let removeSongByIndex = (i) => {
         let tempPlaylist = [...playlist];
         tempPlaylist.splice(i, 1);
-        setPlaylist(tempPlaylist);
+        if(tempPlaylist.length == 0) controls.seek(masterDuration);
+        else setPlaylist(tempPlaylist);
     }
 
     const onSlideBarChange = value => {
@@ -123,7 +125,7 @@ export function PlayerBarComponent(props) {
     );
 
     return <FixedBottom offset={10}>
-        <div style={{width: "91%", minHeight: "6em", maxHeight: "6em", textAlign: "center"}}>
+        <div style={{width: "100%", minHeight: "6em", maxHeight: "6em", textAlign: "center"}}>
             {audio}
             <Row>
                 <Col span={24} style={playerBarStyle}>
