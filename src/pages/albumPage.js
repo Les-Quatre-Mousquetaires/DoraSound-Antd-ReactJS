@@ -6,9 +6,8 @@ import React from 'react';
 
 const AlbumPage = () => {
     return (
-        <div>
-            AlbumPage
-        </div>
+      <div>
+      </div>
     );
 };
 
