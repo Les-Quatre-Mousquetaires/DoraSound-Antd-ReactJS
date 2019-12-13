@@ -6,12 +6,9 @@ import React, {useContext} from 'react';
 import {Card} from 'antd';
 import {connect} from "react-redux";
 import {Get_All} from "../actions/songsAction";
+import AlbumElement from "../components/AlbumComponents/AlbumElement"
 
-const gridStyle = {
-    width: '25%',
-    textAlign: 'center',
-};
-const {Meta} = Card;
+
 
 const AlbumPage = (props) => {
     let {getAllSongs} = props;
@@ -21,16 +18,7 @@ const AlbumPage = (props) => {
          album = props.song.map((item, index) => {
             let imgURL = "https://doraneko.tk/resources/images/" + item.image;
             return (
-                <Card.Grid style={gridStyle} key={index}>
-                <Card
-                    id={item._id}
-                    hoverable
-                    style={{width: "200",height:"200"}}
-                    cover={<img alt="example" style={{width:'200',height:'200'}} src={imgURL}/>}
-                    onClick={(e)=>{console.log(e.target.value)}}>
-                    <Meta title={item.name}/>
-                </Card>
-                </Card.Grid>
+                <AlbumElement key={index} item={item} img={imgURL}/>
             );
         });
     }
