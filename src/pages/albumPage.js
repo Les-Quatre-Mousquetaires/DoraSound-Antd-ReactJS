@@ -11,8 +11,6 @@ import AlbumElement from "../components/AlbumComponents/AlbumElement"
 
 
 const AlbumPage = (props) => {
-    let {getAllSongs} = props;
-    getAllSongs();
     let album = [];
     if(props.song.length>0){
          album = props.song.map((item, index) => {
@@ -34,14 +32,5 @@ const mapStateToProps = (state) => {
         song: state.songsReducer
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllSongs: () => {
-            dispatch(
-                Get_All()
-            );
-        }
-    }
-};
-export default connect(mapStateToProps,mapDispatchToProps)(AlbumPage);
+export default connect(mapStateToProps)(AlbumPage);
 

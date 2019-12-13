@@ -17,13 +17,6 @@ class HomePage extends Component {
         super(props);
 
     }
-
-    componentDidMount() {
-        let {getAllSongs} = this.props;
-        getAllSongs();
-    }
-
-
     render() {
         let playist = [];
         let albumPlaylist;
@@ -76,14 +69,5 @@ const mapStateToProps = (state) => {
         song: state.songsReducer
     };
 };
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getAllSongs: () => {
-            dispatch(
-                Get_All()
-            );
-        }
-    }
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+export default connect(mapStateToProps)(HomePage);

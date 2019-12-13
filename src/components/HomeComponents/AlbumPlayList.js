@@ -46,4 +46,4 @@ const mapStateToProps = (state) => {
         song: state.songsReducer
     };
 };
-export default connect(mapStateToProps, null)(AlbumPlayList);
+export default connect(mapStateToProps)(AlbumPlayList);
