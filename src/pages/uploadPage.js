@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import {Input, Button, Icon, Upload, message} from 'antd';
+import { Redirect } from 'react-router-dom';
 
 class UploadPage extends Component {
-    
-    
+    currentUser = null;
+    token = null;
+
     constructor(props) {
         super(props);
        
@@ -14,12 +16,14 @@ class UploadPage extends Component {
             name: '',
             imageUpload: null,
             songUpload: null,
-            isLoading: false
+            isLoading: false,
+            isSuccessed: false
         };
         
         this.onChangeHandlerAudio = this.onChangeHandlerAudio.bind(this); 
         this.onChangeHandlerImage = this.onChangeHandlerImage.bind(this); 
         this.onChangeHandlerName = this.onChangeHandlerName.bind(this);
+        this.currentUser = JSON.parse(localStorage.getItem('user'));
     }
 
     onChangeHandlerName(e)  {
@@ -58,7 +62,7 @@ class UploadPage extends Component {
         const config = {
             headers: {
                 'content-type': 'multipart/form-data',
-                "Authorization": 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZGVkZDk1NGYwOTExYTJjODIxMmM5NzAiLCJyb2xlIjoidXNlciIsImlhdCI6MTU3NTg4MzYzMywiZXhwIjoxNTc2NDg4NDMzfQ.c5EQBdRuLkglK99DLnAm4iQFRV2k8KIFoauCIG1_-jc'
+                "Authorization": `Bearer ${this.currentUser.token}`
             }
         }
         axios.post(url, formData, config).then((result) => {
@@ -66,6 +70,11 @@ class UploadPage extends Component {
                 isLoading: false
             });
             message.success('Upload successed !', 2.5);
+            setTimeout(() => {
+                this.setState({
+                    isSuccessed: true
+                })
+            }, 3000);
         }).catch(error => {
             this.setState({
                 isLoading: false
@@ -82,10 +91,11 @@ class UploadPage extends Component {
     };
  
     render() {
-        const { imageUpload, songUpload, isLoading } = this.state;
-        
+        const { imageUpload, songUpload, isLoading, isSuccessed } = this.state;
+        let profileUrl = '/users/' + this.currentUser._id;
         return (
             <div>
+                {isSuccessed ? <Redirect to={profileUrl} />: <div></div>}
                 <Upload
                     listType='picture-card'
                     fileList={imageUpload} 

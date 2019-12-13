@@ -3,10 +3,12 @@
  * Email: tranphuquy19@gmail.com
  */
 
-const TRANSFER_COMMENTS = 'TRANSFER_COMMENTS';
+const DEFAULT = 'DEFAULT';
+const TRANSFER_MESSAGES = 'TRANSFER_COMMENTS';
 const TRANSFER_AUDIOS = 'TRANSFER_AUDIOS';
 
-export {
+export const commands = {
+    DEFAULT,
     TRANSFER_AUDIOS,
-    TRANSFER_COMMENTS
+    TRANSFER_MESSAGES
 }

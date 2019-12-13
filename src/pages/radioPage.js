@@ -3,12 +3,14 @@
  * Email: tranphuquy19@gmail.com
  */
 import React from 'react';
+import RealtimeProvider from "../providers/realtimeProvider";
+import RadioContentComponent from "../components/radio/radioContentComponent";
 
 const RadioPage = () => {
     return (
-        <div>
-            RadioPage
-        </div>
+        <RealtimeProvider>
+            <RadioContentComponent/>
+        </RealtimeProvider>
     );
 };
 
