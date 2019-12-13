@@ -8,6 +8,7 @@ import CategoryPage from "../pages/categoryPage";
 import AlbumPage from "../pages/albumPage";
 import UserPage from "../pages/userPage";
 import RadioPage from "../pages/radioPage";
+import UploadPage from '../pages/uploadPage';
 
 const homeContentRoutes = [
     {
@@ -23,14 +24,18 @@ const homeContentRoutes = [
         exact: true,
         main: () => <AlbumPage/>
     },{
-        path: '/users',
+        path: '/users/:id',
         exact: true,
-        main: () => <UserPage/>
+        main: ({match}) => <UserPage match={match}/>
     },{
         path: '/radio',
         exact: true,
         main: () => <RadioPage/>
-    },
+    },{
+        path: '/upload',
+        exact: true,
+        main: () => <UploadPage />
+    }
 ];
 
 export default homeContentRoutes;

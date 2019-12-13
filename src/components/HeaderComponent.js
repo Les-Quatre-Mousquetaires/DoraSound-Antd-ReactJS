@@ -4,6 +4,7 @@ import {LoginModalContext} from "../contexts/loginModalContext";
 import {UserContext} from "../contexts/userContext";
 import {localLogout} from "../actions/authAction";
 import User from "../models/userModel";
+import {Link} from 'react-router-dom';
 
 const {Header} = Layout;
 
@@ -20,12 +21,13 @@ export function HeaderComponent() {
         setUser(User);
     }
 
+    let profileUrl = '/users/' + user._id;
     const menu = (
         <Menu>
             <Menu.Item>
-                <a rel="noopener noreferrer">
+                <Link to={profileUrl} rel="noopener noreferrer">
                     <span><Icon className="mb-2" type="user"/> Profile</span>
-                </a>
+                </Link>
             </Menu.Item>
             <Menu.Item>
                 <a rel="noopener noreferrer">
