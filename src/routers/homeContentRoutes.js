@@ -8,6 +8,7 @@ import CategoryPage from "../pages/categoryPage";
 import AlbumPage from "../pages/albumPage";
 import UserPage from "../pages/userPage";
 import RadioPage from "../pages/radioPage";
+import AdminPage  from '../pages/adminPage';
 
 const homeContentRoutes = [
     {
@@ -30,7 +31,11 @@ const homeContentRoutes = [
         path: '/radio',
         exact: true,
         main: () => <RadioPage/>
-    },
+    },{
+        path: '/admin',
+        exact: true,
+        main: () => <AdminPage/>
+    }
 ];
 
 export default homeContentRoutes;

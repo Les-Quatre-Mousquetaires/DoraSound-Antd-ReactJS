@@ -6,7 +6,15 @@ import {Link} from "react-router-dom";
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
+const checkRole = () => {
+    var user = JSON.parse(localStorage.getItem('user'));
+    var role = user.role;
+    return role;
+} 
+
 export function SiderComponent(props) {
+    var role = checkRole();
+    console.log(role==="admin");
     return <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
         {/*<div className="logo"/>*/}
         <div style={{height: '62px'}}></div>
@@ -31,6 +39,9 @@ export function SiderComponent(props) {
             <Menu.Item key="9"><Icon type="file"/>
                 <span>File</span>
             </Menu.Item>
+            {role === 'admin'? 
+                <Menu.Item key="10"><Link to="/admin"><i className="fas fa-users-crown"></i></Link></Menu.Item> : null
+            }
         </Menu>
     </Sider>;
 }
