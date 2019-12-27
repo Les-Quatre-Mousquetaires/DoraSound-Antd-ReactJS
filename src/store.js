@@ -56,6 +56,7 @@ const Store = ({children}) => {
     ]);
     const [songIndex, setSongIndex] = useState(0);
 
+
     return (
         <UserContext.Provider value={[user, setUser]}>
             <LoginModalContext.Provider value={[modalLogin, setModalLogin]}>

@@ -1,11 +1,11 @@
 let Song = {
-    _id:'',
-    artist:[],
-    comments:[],
-    name:'',
-    src:'',
-    image:'',
-    creator:''
+    _id: '',
+    artist: [],
+    comments: [],
+    name: '',
+    src: '',
+    image: '',
+    creator: ''
 };
 
-export  default  Song;
+export default Song;

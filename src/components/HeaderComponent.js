@@ -84,4 +84,3 @@ function HeaderComponent(props) {
 };
 
 export default (HeaderComponent);
-

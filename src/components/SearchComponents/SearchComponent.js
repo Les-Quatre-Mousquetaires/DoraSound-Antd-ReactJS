@@ -41,7 +41,7 @@ class SearchComponent extends Component {
         return (
             <div>
                 <SearchBar search={this.searchData}/>
-                {(this.state.list) ? <SearchResult data={this.state.list}/> : "HELLO"}
+                {(this.state.list) ? <SearchResult data={this.state.list}/> : ""}
             </div>
         );
     }
