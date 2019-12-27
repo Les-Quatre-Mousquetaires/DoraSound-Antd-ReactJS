@@ -9,7 +9,9 @@ import {UserContext} from "./contexts/userContext";
 import {LoginModalContext} from "./contexts/loginModalContext";
 import {PlaylistContext} from "./contexts/playlistContext";
 import {SongIndexContext} from "./contexts/songIndexContext";
+import { ViewUserContext } from "./contexts/ViewUserContext";
 import {PlayStatusContext} from "./contexts/playStatusContext";
+
 
 const Store = ({children}) => {
     const userLogged = JSON.parse(localStorage.getItem('user'));
@@ -55,6 +57,8 @@ const Store = ({children}) => {
         },
     ]);
     const [songIndex, setSongIndex] = useState(0);
+    const [viewUser, setViewUser] = useState(User);
+
 
 
     return (
@@ -62,9 +66,11 @@ const Store = ({children}) => {
             <LoginModalContext.Provider value={[modalLogin, setModalLogin]}>
                 <PlaylistContext.Provider value={{playlist, setPlaylist}}>
                     <SongIndexContext.Provider value={{songIndex, setSongIndex}}>
-                        <PlayStatusContext.Provider value={{playStatus, setPlayStatus}}>
-                            {children}
-                        </PlayStatusContext.Provider>
+                        <ViewUserContext.Provider value={{viewUser, setViewUser}}>
+                            <PlayStatusContext.Provider value={{playStatus, setPlayStatus}}>
+                                {children}
+                            </PlayStatusContext.Provider>
+                        </ViewUserContext.Provider>
                     </SongIndexContext.Provider>
                 </PlaylistContext.Provider>
             </LoginModalContext.Provider>

@@ -1,3 +1,4 @@
+
 import apiCaller from '../commons/apiCaller';
 import { GET_ALL_USERS, DELETE_USER } from '../commons/type';
 
@@ -15,5 +16,12 @@ const deleteUser = (id) => {
     }
 }
 
+const getUser = async (id) => {
+    const response =  await apiCaller(`api/users/${id}`,'GET');
+    return response;
+    
+};
 
-export {getAllUsers, deleteUser}
+export {getAllUsers, deleteUser, getUser}
+
+
