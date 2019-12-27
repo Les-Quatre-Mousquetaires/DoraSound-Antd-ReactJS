@@ -10,6 +10,7 @@ import {PlayStatusContext} from "../contexts/playStatusContext";
 export function PlayerBarComponent() {
     let playerBarStyle = {
         backgroundColor: '#03141A'
+        
     };
 
     let {playStatus, setPlayStatus} = useContext(PlayStatusContext);
@@ -67,7 +68,8 @@ export function PlayerBarComponent() {
     );
 
     return <FixedBottom offset={10}>
-        <div style={{width: "91%", minHeight: "6em", maxHeight: "6em", textAlign: "center"}}>
+
+        <div style={{width: "100%", minHeight: "6em", maxHeight: "6em", textAlign: "center"}}>
             <Sound
                 url={src}
                 playStatus={playStatus}

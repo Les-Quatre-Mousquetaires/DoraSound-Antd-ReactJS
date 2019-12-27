@@ -8,7 +8,10 @@ import CategoryPage from "../pages/categoryPage";
 import AlbumPage from "../pages/albumPage";
 import UserPage from "../pages/userPage";
 import RadioPage from "../pages/radioPage";
+
 import AdminPage  from '../pages/adminPage';
+
+import ProfilePage from "../pages/profilePage";
 
 const homeContentRoutes = [
     {
@@ -35,7 +38,12 @@ const homeContentRoutes = [
         path: '/admin',
         exact: true,
         main: () => <AdminPage/>
-    }
+    },{
+        path: '/profile',
+        exact: true,
+        main: () => <ProfilePage/>
+    },
+
 ];
 
 export default homeContentRoutes;

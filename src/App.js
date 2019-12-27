@@ -4,7 +4,7 @@ import {Layout} from 'antd';
 import 'antd/dist/antd.css';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import {SiderComponent} from "./components/SiderComponent";
-import {HeaderComponent} from "./components/HeaderComponent";
+import HeaderComponent from "./components/HeaderComponent";
 import {ContentComponent} from "./components/ContentComponent";
 import Store from "./store";
 import LoginModelComponent from "./components/LoginModalComponent";

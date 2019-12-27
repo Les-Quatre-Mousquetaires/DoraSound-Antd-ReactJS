@@ -20,7 +20,7 @@ const Store = ({children}) => {
         isLoading: false,
         isVisible: false
     });
-    const [playStatus, setPlayStatus] = useState('PLAYING');
+    const [playStatus, setPlayStatus] = useState('PAUSED');
     const [playlist, setPlaylist] = useState([
         {
             "_id": "5dedeed78b7207310f14a7c0",

@@ -1,20 +1,16 @@
 import * as PropTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
 import {Layout, Menu, Icon} from 'antd';
 import {Link} from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
-const checkRole = () => {
-    var user = JSON.parse(localStorage.getItem('user'));
-    var role = user.role;
-    return role;
-} 
 
 export function SiderComponent(props) {
-    var role = checkRole();
-    console.log(role==="admin");
+    const [user, setUser] = useContext(UserContext);
+
     return <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
         {/*<div className="logo"/>*/}
         <div style={{height: '62px'}}></div>
@@ -25,7 +21,7 @@ export function SiderComponent(props) {
             </Menu.Item>
             <Menu.Item key="2" className="text-success">
                 <Icon type="profile"/>
-                <span><Link to="/users">Profile</Link></span>
+                <span><Link to="/profile">Profile</Link></span>
             </Menu.Item>
             <SubMenu key="sub1" title={<span><Icon type="audio"/><span>Music World</span></span>}>
                 <Menu.Item key="3"><i className="fas fa-compact-disc"> <Link to="/albums"> Albums</Link></i></Menu.Item>
@@ -39,7 +35,7 @@ export function SiderComponent(props) {
             <Menu.Item key="9"><Icon type="file"/>
                 <span>File</span>
             </Menu.Item>
-            {role === 'admin'? 
+            {user.role === 'admin'? 
                 <Menu.Item key="10"><Link to="/admin"><i className="fas fa-users-crown"></i></Link></Menu.Item> : null
             }
         </Menu>

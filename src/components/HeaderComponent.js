@@ -4,23 +4,22 @@ import {LoginModalContext} from "../contexts/loginModalContext";
 import {UserContext} from "../contexts/userContext";
 import {localLogout} from "../actions/authAction";
 import User from "../models/userModel";
-import randomColor from 'randomcolor';
+import SearchComponent from "./SearchComponents/SearchComponent";
+
 
 const {Header} = Layout;
 
-export function HeaderComponent() {
+function HeaderComponent(props) {
     const [loginModal, setLoginModel] = useContext(LoginModalContext);
     const [user, setUser] = useContext(UserContext);
 
     const handleClickLogin = () => {
         setLoginModel({...loginModal, isVisible: true});
-    }
-
+    };
     const onLogoutClick = () => {
         localLogout();
         setUser(User);
-    }
-
+    };
     const menu = (
         <Menu>
             <Menu.Item>
@@ -41,32 +40,47 @@ export function HeaderComponent() {
             </Menu.Item>
         </Menu>
     );
-
     return <Header style={{background: "#fff", padding: 0}}>
-        <nav className="navbar navbar-light"
+        <nav className="navbar navbar-light navbar-inverse"
              style={{backgroundColor: '#001529', height: '66px', paddingTop: '0px', paddingBottom: '0px'}}>
-            <a className="navbar-brand" href="#" style={{paddingTop: '0px', paddingBottom: '0px'}}>
+            <ul className="navbar-header" href="#" style={{paddingTop: '0px', paddingBottom: '0px'}}>
                 <img src="LOGO2.png" width={200} height={48} alt=""/>
-            </a>
-            <form className="form-inline">
-                <input className="form-control mr-sm-2" type="search" placeholder="Nhập tên bài hát, ca sĩ ...."
-                       aria-label="Search" style={{width: '350px'}}/>
-                {(user && user.token) ?
-                    <div style={{marginRight: '1em', cursor: 'pointer'}}>
-                        <Dropdown overlay={menu}>
-                            <Avatar style={{
-                                backgroundColor: randomColor({luminosity: 'dark'}),
-                                verticalAlign: 'middle',
-                            }}>{user.name.split(' ').pop()}</Avatar>
-                        </Dropdown>
+            </ul>
+
+
+            <div className="float-right mr-5">
+                <div className="row ">
+                    <div className="col-7 ">
+                        <SearchComponent />
                     </div>
-                    :
-                    <button className="btn btn-success my-2 my-sm-0" style={{marginRight: '1em'}} type="button"
-                            onClick={() => handleClickLogin()}>Đăng Nhập
-                    </button>
-                }
-            </form>
+                    <div className="col-5">
+                        <form className="form-inline">
+                            {(user && user.token) ?
+                                <div style={{marginRight: '1em', marginLeft: '3em', cursor: 'pointer'}}>
+                                    <Dropdown overlay={menu}>
+                                        <Avatar
+                                            size={40}
+                                            style={{
+                                                backgroundColor: '#3bc8e7',
+                                                verticalAlign: 'middle'
+                                            }}>{user.name.split(' ').pop()}</Avatar>
+                                    </Dropdown>
+                                </div>
+                                :
+
+                                <div className="ms_top_btn">
+                                    <a className="ms_btn m-auto" style={{color: 'white'}}
+                                       onClick={() => handleClickLogin()}>Đăng
+                                        Nhập</a>
+                                </div>
+                            }
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </nav>
     </Header>;
-}
+};
 
+export default (HeaderComponent);
