@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 const gridStyle = {
     width: '20%',
     textAlign: 'center',
+    marginBottom:"6em"
 };
 const { Meta } = Card;
 
@@ -22,10 +23,9 @@ function AlbumElement(props) {
             songCurrent = item;
         }
     });
-    return <Card.Grid style={gridStyle} id={props.item._id}>
+    return <Card.Grid hoverable={false} style={gridStyle} id={props.item._id}>
         <Card
-            hoverable
-            style={{ height: "200" }}
+            style={{ height: "280px" }}
             cover={<img alt="example" style={{ height: "15em", width: '15em' }} src={props.img} />}
             onClick={(e) => {
                 let music = [];
