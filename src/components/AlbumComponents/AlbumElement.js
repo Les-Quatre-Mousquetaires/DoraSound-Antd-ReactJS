@@ -8,7 +8,8 @@ import { connect } from "react-redux";
 const gridStyle = {
     width: '20%',
     textAlign: 'center',
-    marginBottom:"6em"
+    marginBottom:"6em",
+    cursor:"pointer"
 };
 const { Meta } = Card;
 
