@@ -4,8 +4,18 @@ import {LoginModalContext} from "../contexts/loginModalContext";
 import {UserContext} from "../contexts/userContext";
 import {localLogout} from "../actions/authAction";
 import User from "../models/userModel";
+<<<<<<< HEAD
 import SearchComponent from "./SearchComponents/SearchComponent";
 
+=======
+
+import SearchComponent from "./SearchComponents/SearchComponent";
+
+import {Link} from 'react-router-dom';
+import randomColor from 'randomcolor';
+
+
+>>>>>>> tam_master
 
 const {Header} = Layout;
 
@@ -20,12 +30,15 @@ function HeaderComponent(props) {
         localLogout();
         setUser(User);
     };
+    
+
+    let profileUrl = '/users/' + user._id;
     const menu = (
         <Menu>
             <Menu.Item>
-                <a rel="noopener noreferrer">
+                <Link to={profileUrl} rel="noopener noreferrer">
                     <span><Icon className="mb-2" type="user"/> Profile</span>
-                </a>
+                </Link>
             </Menu.Item>
             <Menu.Item>
                 <a rel="noopener noreferrer">

@@ -1,12 +1,16 @@
 import * as PropTypes from "prop-types";
-import React from "react";
+import React, { useContext } from "react";
 import {Layout, Menu, Icon} from 'antd';
 import {Link} from "react-router-dom";
+import { UserContext } from "../contexts/userContext";
 
 const {Sider} = Layout;
 const {SubMenu} = Menu;
 
+
 export function SiderComponent(props) {
+    const [user, setUser] = useContext(UserContext);
+
     return <Sider collapsible collapsed={props.collapsed} onCollapse={props.onCollapse}>
         {/*<div className="logo"/>*/}
         <div style={{height: '62px'}}></div>
@@ -31,6 +35,9 @@ export function SiderComponent(props) {
             <Menu.Item key="9"><Icon type="file"/>
                 <span>File</span>
             </Menu.Item>
+            {user.role === 'admin'? 
+                <Menu.Item key="10"><Link to="/admin"><i className="fas fa-users-crown"></i></Link></Menu.Item> : null
+            }
         </Menu>
     </Sider>;
 }
