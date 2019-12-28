@@ -4,18 +4,10 @@ import {LoginModalContext} from "../contexts/loginModalContext";
 import {UserContext} from "../contexts/userContext";
 import {localLogout} from "../actions/authAction";
 import User from "../models/userModel";
-<<<<<<< HEAD
-import SearchComponent from "./SearchComponents/SearchComponent";
-
-=======
-
 import SearchComponent from "./SearchComponents/SearchComponent";
 
 import {Link} from 'react-router-dom';
 import randomColor from 'randomcolor';
-
-
->>>>>>> tam_master
 
 const {Header} = Layout;
 

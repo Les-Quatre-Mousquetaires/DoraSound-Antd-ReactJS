@@ -1,15 +1,15 @@
-import React, {useContext} from 'react';
-import {Icon, Button} from 'antd';
-import {connect} from "react-redux";
-import {PlaylistContext} from "../../contexts/playlistContext";
-import {SongIndexContext} from "../../contexts/songIndexContext";
-import {PlayStatusContext} from "../../contexts/playStatusContext";
+import React, { useContext } from 'react';
+import { Icon, Button } from 'antd';
+import { connect } from "react-redux";
+import { PlaylistContext } from "../../contexts/playlistContext";
+import { SongIndexContext } from "../../contexts/songIndexContext";
+import { PlayStatusContext } from "../../contexts/playStatusContext";
 
 
 const AlbumPlayList = (props) => {
-    const {playlist, setPlaylist} = useContext(PlaylistContext);
-    const {songIndex, setSongIndex} = useContext(SongIndexContext);
-    const {playStatus, setPlayStatus} = useContext(PlayStatusContext);
+    const { playlist, setPlaylist } = useContext(PlaylistContext);
+    const { songIndex, setSongIndex } = useContext(SongIndexContext);
+    const { playStatus, setPlayStatus } = useContext(PlayStatusContext);
     return (
         <div>
             {/*{props.id}*/}
@@ -22,12 +22,17 @@ const AlbumPlayList = (props) => {
                 });
                 switch (props.type) {
                     case "play-circle":
-                        setPlaylist([songCurrent, ...playlist]);
-                        setSongIndex(0);
-                        setPlayStatus('PLAYING');
+                        if (playlist.indexOf(songCurrent) > -1) {
+                            window.alert("Đã có trong danh sách");
+                        } else {
+                            setPlaylist([songCurrent, ...playlist]);
+                            setSongIndex(0);
+                            setPlayStatus('PLAYING');
+                        }
+
                         return;
                     case "plus":
-                            playlist.splice(songIndex + 1, 0, songCurrent);
+                        playlist.splice(songIndex + 1, 0, songCurrent);
                         setPlaylist(playlist);
                         return;
                     case "ellipsis":
@@ -36,7 +41,7 @@ const AlbumPlayList = (props) => {
                     default:
                         return;
                 }
-            }}/>
+            }} />
             <p>{props.name}</p>
         </div>
     );
