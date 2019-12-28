@@ -7,7 +7,7 @@ import { Image } from 'react-bootstrap';
 import ReactImageZoom from 'react-image-zoom';
 
 function onChange(pagination, filters, sorter, extra) {
-  console.log('params', pagination, filters, sorter, extra);
+  //console.log('params', pagination, filters, sorter, extra);
 }
 
 class AdminPage extends Component {

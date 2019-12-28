@@ -4,7 +4,6 @@ import {Link} from 'react-router-dom';
 
 export const ViewUserComponent = () => {
     const {viewUser} = useContext(ViewUserContext); 
-    console.log(viewUser)
     return (
         <div>
         <React.Fragment>

@@ -25,7 +25,7 @@ const RadioContentComponent = () => {
             </div>
             <div className="col-6">
                 <div className="row">
-                    <div className="col-12" style={{minHeight: '300px', maxHeight: '300px', overflowY: 'auto'}}>
+                    <div className="col-12" style={{minHeight: '380px', maxHeight: '380px',paddingBottom:'300px', overflowY: 'auto'}}>
                         <ScrollToBottom mode="bottom">
                             {messageCards}
                         </ScrollToBottom>

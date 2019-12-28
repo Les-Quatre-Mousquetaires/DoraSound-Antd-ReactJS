@@ -22,13 +22,16 @@ const AlbumPlayList = (props) => {
                 });
                 switch (props.type) {
                     case "play-circle":
-                        if (playlist.indexOf(songCurrent) > -1) {
-                            window.alert("Đã có trong danh sách");
-                        } else {
-                            setPlaylist([songCurrent, ...playlist]);
-                            setSongIndex(0);
-                            setPlayStatus('PLAYING');
+                        let music = [];
+                        music.push(songCurrent);
+                        for (let i = 0; i < playlist.length; i++) {
+                            if (songCurrent._id !== playlist[i]._id) {
+                                music.push(playlist[i]);
+                            }
                         }
+                        setPlaylist(music);
+                        setSongIndex(0);
+                        setPlayStatus('PLAYING');
 
                         return;
                     case "plus":

@@ -44,9 +44,14 @@ const RatingTableComponent = () => {
                                 currentSong = realtimePlaylist[i]; break;
                             }
                         }
-                        let resData = [currentSong, ...playlist];
-                        console.log(resData);
-                        setPlaylist(resData);
+                        let music = [];
+                        music.push(currentSong);
+                        for (let i = 0; i < playlist.length; i++) {
+                            if (currentSong._id !== playlist[i]._id) {
+                                music.push(playlist[i]);
+                            }
+                        }
+                        setPlaylist(music);
                         setSongIndex(0);
                         setPlayStatus('PLAYING');
                     }}>{name}</a>
@@ -56,6 +61,7 @@ const RatingTableComponent = () => {
         {
             title: 'Số lượt bình chọn',
             dataIndex: 'point',
+            aligh:"center",
             key: 'point',
         },
         {
@@ -65,15 +71,26 @@ const RatingTableComponent = () => {
             render: (vote, record) => (
                 <span>
                     <Checkbox id={record.key} onChange={(e) => {
-                        if (user._id !== "") {
-                            sendSocketDataObject({
-                                command: commands.TRANSFER_VOTING,
-                                payload: {
-                                    songId: record.key,
-                                    userId: user._id,
-                                    voteUp: true
-                                }
-                            });
+                        if (typeof (user._id) != 'undefined') {
+                            if (e.target.checked) {
+                                sendSocketDataObject({
+                                    command: commands.TRANSFER_VOTING,
+                                    payload: {
+                                        songId: record.key,
+                                        userId: user._id,
+                                        voteUp: true
+                                    }
+                                });
+                            } else {
+                                sendSocketDataObject({
+                                    command: commands.TRANSFER_VOTING,
+                                    payload: {
+                                        songId: record.key,
+                                        userId: user._id,
+                                        voteUp: false
+                                    }
+                                });
+                            }
                         } else {
                             window.alert("Vui lòng đăng nhập để bình chọn!");
                         }

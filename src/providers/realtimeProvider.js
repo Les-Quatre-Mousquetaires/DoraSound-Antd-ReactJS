@@ -20,11 +20,11 @@ const RealtimeProvider = ({children}) => {
     useEffect(() => {
         switch (socketDataObject.command) {
             case commands.TRANSFER_MESSAGES:
-                console.log(socketDataObject);
+                //console.log(socketDataObject);
                 setRealtimeChatArr([socketDataObject.payload, ...realtimeChatArr]);
                 break;
             case commands.TRANSFER_VOTING:
-                console.log(socketDataObject.payload);
+                //console.log(socketDataObject.payload);
                 setRealtimePlaylist(socketDataObject.payload);
                 break;
         }

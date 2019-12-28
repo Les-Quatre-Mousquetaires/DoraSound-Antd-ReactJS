@@ -9,7 +9,7 @@ let userReducer = (state = usersInitState, action) => {
             state = action.payload.data;
             return state;
         case DELETE_USER:
-            console.log(action.payload);
+            //console.log(action.payload);
             return state.filter((user) => user._id !== action.payload);
         default:
             return state;

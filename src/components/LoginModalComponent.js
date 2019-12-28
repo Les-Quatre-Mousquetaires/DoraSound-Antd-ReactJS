@@ -45,7 +45,7 @@ const LoginModelComponent = () => {
         if (hasError) {
             setLoginModel({...loginModel, isLoading: false});
         } else {
-            console.log(responseApi);
+            //console.log(responseApi);
             setUser(responseApi.data);
             setLoginModel({isLoading: false, isVisible: false});
         }
